@@ -1,14 +1,14 @@
 package main
 
 import (
-	"context"
 	"log"
 	"net"
 	"os"
 	"sync"
 
 	"github.com/Sadham-Hussian/Chat-DG/proto"
-	"google.golang.org/grpc"
+	context "golang.org/x/net/context"
+	grpc "google.golang.org/grpc"
 	glog "google.golang.org/grpc/grpclog"
 )
 

@@ -25,7 +25,6 @@ func init() {
 
 func connect(user *proto.User) error {
 	var streamerror error
-
 	stream, err := client.CreateStream(context.Background(), &proto.Connect{
 		User:   user,
 		Active: true,
@@ -34,7 +33,7 @@ func connect(user *proto.User) error {
 	if err != nil {
 		return fmt.Errorf("Connection Failed %v", err)
 	}
-
+	fmt.Println("came here")
 	wait.Add(1)
 	go func(str proto.Broadcast_CreateStreamClient) {
 		defer wait.Done()
@@ -67,7 +66,7 @@ func main() {
 		log.Fatalf("Could connect to server: %v", err)
 	}
 
-	client := proto.NewBroadcastClient(conn)
+	client = proto.NewBroadcastClient(conn)
 	user := &proto.User{
 		Id:   hex.EncodeToString(id[:]),
 		Name: *name,
