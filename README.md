@@ -1,2 +1,2 @@
 # Chat-DG
-Chat app with docker and gRPC
+Chat app with Docker and gRPC
