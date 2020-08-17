@@ -33,7 +33,6 @@ func connect(user *proto.User) error {
 	if err != nil {
 		return fmt.Errorf("Connection Failed %v", err)
 	}
-	fmt.Println("came here")
 	wait.Add(1)
 	go func(str proto.Broadcast_CreateStreamClient) {
 		defer wait.Done()
@@ -45,7 +44,7 @@ func connect(user *proto.User) error {
 				break
 			}
 
-			fmt.Printf("%v : %v", msg.Id, msg.Content)
+			fmt.Printf("%v : %v\n", msg.Id, msg.Content)
 		}
 	}(stream)
 
@@ -73,7 +72,7 @@ func main() {
 	}
 
 	connect(user)
-
+	fmt.Println("Connected..")
 	wait.Add(1)
 
 	go func() {
